@@ -18,13 +18,10 @@ class ViewController: UIViewController {
     
     var quizBrain = QuizBrain()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
     }
-    
-    
     @IBAction func buttonPressed(_ sender: UIButton) {
         let userAnswer = sender.currentTitle!
         let userGotRight = quizBrain.checkAnswer(userAnswer: userAnswer)
@@ -35,12 +32,9 @@ class ViewController: UIViewController {
         else{
             sender.backgroundColor = UIColor.red
         }
-        
-        
         quizBrain.nextQuestion()
         
         Timer.scheduledTimer(timeInterval: 0.9, target:self, selector:#selector(updateUI), userInfo: nil, repeats: false)
-        
     }
     @objc func updateUI(){
         questionLabel.text = quizBrain.getQuestionText()
@@ -48,11 +42,7 @@ class ViewController: UIViewController {
         trueButton.backgroundColor = UIColor.clear
         falseButton.backgroundColor = UIColor.clear
         progressBar.progress = quizBrain.getProcess()
-        
-        
     }
-    
-   
-    }
+}
 
 
